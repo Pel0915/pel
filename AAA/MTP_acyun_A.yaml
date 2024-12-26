@@ -1,0 +1,275 @@
+# 机场订阅，名称不能重复
+proxy-providers:
+  Acyun: #机场名字
+    type: http
+    interval: 43200 #机场更新时间（单位：s）
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 🟢 直连
+    url: "XXXXXXXX"
+    
+proxy-providers:
+  Acyun: #机场名字
+    type: http
+    interval: 43200 #机场更新时间（单位：s）
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 🟢 直连
+    url: "XXXXXXXX"
+    override:  #1跳过证书
+      skip-cert-verify: true #2跳过证书：开启
+      udp: true #3
+      down: "50 Mbps" #4
+      up: "10 Mbps" #5
+      
+# 用于下载订阅时指定UA
+global-ua: clash.meta
+    
+# 全局配置
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7894
+ipv6: false                 #开启：true 关闭：false
+allow-lan: true               #允许局域网流量
+unified-delay: true         #统一延迟
+tcp-concurrent: true        #默认开启
+# interface-name: eth0  （路由器下根据情况指定出站接口）
+authentication:             #stocks远程代理设置
+  - name:passwd             #用户名：密码
+  
+geodata-mode: false         #数据库   GeoIP格式：false：MMDB(推荐)/true:DAT
+# GEO 文件加载模式（standard：标准加载器/memconservative：专为内存受限 (小内存) 设备优化的加载器 (默认值)）
+geodata-loader: standard
+geo-auto-update: true       #定时更新GeoX文件
+geo-update-interval: 48     #定时更新GeoX文件的间隔时间
+#数据库链接；不用动
+geox-url:
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.metadb"
+  geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  asn: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+  
+# 控制面板
+external-controller: 0.0.0.0:9090
+secret: "1843187043jia"
+external-ui: ui
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+# 下载面板地址可更换：https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip（备用）
+
+# 匹配进程 always；总式/strict；内核自动/off；如果是路由器使用直接关闭，不需要匹配进程
+find-process-mode: strict
+global-client-fingerprint: chrome
+keep-alive-idle: 600
+keep-alive-interval: 30
+
+# 策略组选择和fakeip缓存
+profile:
+  store-selected: true
+  store-fake-ip: true
+  
+# 流量嗅探
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - "Mijia Cloud"
+    - "dlg.io.mi.com"
+    - "+.push.apple.com"
+    - "+.apple.com"
+    
+# 代理模式
+tun:
+  enable: true
+  stack: mixed
+  mtu: 9000
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+  
+# DNS模块
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  respect-rules: true     #开启流量遵循规则一定要有proxy-groups:，否则报错！！！
+  # 模式切换 redir-host / fake-ip
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  # 模式切换 whitelist；白名单/blacklist；黑名单   
+  # 黑名单模式表示如果匹配成功则不返回 Fake-IP, 白名单模式时只有匹配成功才返回 Fake-IP
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+    - geosite:private
+    - geosite:cn
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver-policy:
+    "rule-set:private_domain,cn_domain":
+    - 223.5.5.5
+    - 119.29.29.29
+    "rule-set:geolocation-!cn":
+      - "https://dns.cloudflare.com/dns-query"
+      - "https://dns.google/dns-query"
+ 
+   
+proxies:
+- name: "🟢 直连"
+  type: direct
+  udp: true
+
+# 锚点
+pr: &pr {type: select, proxies: [🐸 手动切换, 🤖 AI, 🎵 TikTok, 📹 YouTube, 🎥 Netflix， 🌍 国际, 🦅 美国节点, 🟢 直连]}
+  
+# 策略组
+proxy-groups:
+  - {name: 🐸 手动切换, type: select, include-all: true, tolerance: 20, interval: 300}
+  - {name: 🤖 AI, type: select, proxies: [🐸 手动切换, 🦅 美国节点]}
+  - {name: 📹 YouTube, type: select, proxies: [🦅 美国节点, 🐸 手动切换]}
+  - {name: 🎵 TikTok, type: select, proxies: [🐸 手动切换, 🦅 美国节点]}
+  - {name: 📲 Telegram, type: select, proxies: [🐸 手动切换, 🦅 美国节点]}
+  - {name: 👨🏿‍💻 GitHub, type: select, proxies: [🐸 手动切换, 🦅 美国节点]}
+  - {name: 🚂 Google, type: select, proxies: [🐸 手动切换, 🦅 美国节点]}
+  - {name: 🦅 美国节点, type: select, include-all: true, filter: "(?=.*(美国))^((?!(优化|亿分)).)*$"}
+  - {name: 🎥 Netflix, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|美国Ⅰ|德国Ⅰ|英国Ⅰ|日本|新加坡))"}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(德国Hy2 ×1|英国Hy2 ×0|优化|美国 ①|距离下次)).)*$"}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [🦅 美国节点, 🐸 手动切换, ♻️ 自动选择]}
+  - {name: 🌍 国际, type: select, proxies: [🐸 手动切换, 🦅 美国节点]}
+  - {name: 🐬 OneDrive, type: select, proxies: [🐸 手动切换, 🦅 美国节点]}
+  - {name: 💶 PayPal, type: select, proxies: [🦅 美国节点, 🐸 手动切换]}
+  - {name: 🍎 Apple, type: select, proxies: [🐸 手动切换,🟢 直连, 🦅 美国节点]}
+  - {name: 🪟 Microsoft, type: select, proxies: [🟢 直连, 🐸 手动切换]}
+  - {name: 🟢 全球直连, type: select, proxies: [🟢 直连, 🐸 手动切换, 🦅 美国节点]}
+#释义：
+#      #fallback/故障转移、select/手动、url-test/自动、include-all/全部节点
+#(
+#  包含
+#  : (?=.*(XXX|XXX|XXX))
+#  不包含
+#  : ^((?!(XXX|XXX|XXX)).)*$
+#  手动
+#  : select
+#  自动
+#  : fallback
+#待定  - {name: 🏳️‍🌈 美国均衡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
+#待定  - {name: 🤯 低价均衡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(x〇|×0|×1|Hy2|移动优化|三网优化|电信联通优化)"}
+
+#  ip：
+#  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+#  域名：
+#  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+#    名称   规则名    远端规则    更新频率/秒     二进制内容 规则名       mrs后缀名文件
+
+
+#  qcy: &qcy {type: http, interval: 86400, behavior: domain, format: text}
+
+#  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+#   名称   规则名    远端规则    更新频率/秒     二进制内容 规则名       list后缀名文件（经典后缀格式）
+# )
+rules:     #分流规则，按顺序依次排列
+  #纯域名
+  - RULE-SET,private_domain,🟢 直连
+  - RULE-SET,ChatGPT,🤖 AI #私有收集
+  - RULE-SET,google3_domain,👨🏿‍💻 GitHub
+  - RULE-SET,youtube_domain,📹 YouTube
+  - RULE-SET,tiktok_domain,🎵 TikTok
+  - RULE-SET,telegram_domain,📲 Telegram
+  - RULE-SET,github_domain,👨🏿‍💻 GitHub
+  - RULE-SET,google_domain,🚂 Google
+  - RULE-SET,apple_domain,🍎 Apple
+  - RULE-SET,direct1,🟢 直连
+  - RULE-SET,amazon_domain,🟢 直连
+  - RULE-SET,amazon1_domain,🟢 直连
+  - RULE-SET,cmb_domain,🟢 直连
+  - RULE-SET,icbc_domain,🟢 直连
+  - RULE-SET,ccb_domain,🟢 直连
+  - RULE-SET,abc_domain,🟢 直连
+  - RULE-SET,google1_domain,🌍 国际
+  - RULE-SET,google2_domain,🌍 国际
+  - RULE-SET,geolocation-!cn,🌍 国际
+  - RULE-SET,microsoft_domain,🪟 Microsoft
+  - RULE-SET,onedrive_domain,🐬 OneDrive
+  - RULE-SET,paypal_domain,💶 PayPal
+  - RULE-SET,cn_domain,🟢 直连
+  - RULE-SET,netflix_domain,🎥 Netflix
+  #纯IP
+  - RULE-SET,google_ip,🚂 Google,no-resolve
+  - RULE-SET,netflix_ip,🎥 Netflix,no-resolve
+  - RULE-SET,telegram_ip,📲 Telegram,no-resolve
+  - RULE-SET,cn_ip,🟢 直连
+  - MATCH,🐟 漏网之鱼
+
+rule-anchor:                 #规则集，这里不用按顺序排列，以便上方识别。ip、domain、qcy、class：锚点
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+#  Pel: &Pel {type: http, interval: 86400, behavior: domain, format: text}       私有收集新格式，文件内只有  ‘+.域名’  的新格式用这个
+  clash: &clash {type: http, interval: 86400, behavior: classical, format: text}
+rule-providers:
+
+  # 纯域名
+  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs" }
+  direct1: {<<: *clash, url: "https://raw.githubusercontent.com/Pel0915/MihomoTproxy/refs/heads/main/Direct.list" }  # 私有🟢 直连纯域名
+  ChatGPT: {<<: *clash, url: "https://raw.githubusercontent.com/Pel0915/MihomoTproxy/refs/heads/main/ChatGPT.list" } # 私有🌍 国际纯域名
+  google3_domain: {<<: *clash, url: "https://raw.githubusercontent.com/Pel0915/clash/new/main/CLASH/google.list" } # 私有🌍 国际纯域名
+# 互联网收集纯域名
+  amazon_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/amazon.mrs" }
+  amazon1_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/amazon%40cn.mrs" }
+  cmb_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/cmb.mrs" }
+  icbc_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/icbc.mrs" }
+  ccb_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/ccb.mrs" }
+  abc_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/abc.mrs" }
+  youtube_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs" }
+  google_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs" }
+  github_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs" }
+  telegram_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs" }
+  netflix_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs" }
+  paypal_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.mrs" }
+  microsoft_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs" }
+  apple_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs" }
+  tiktok_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs" }
+  cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/Pel0915/pel-MihomoTproxy/blob/main/cn.list" }
+  onedrive_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/onedrive.mrs" }
+  google1_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo-lite/geosite/proxy.mrs" }
+  google2_domain: {<<: *clash, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/globalsign.mrs" }
+  geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/geolocation-!cn.mrs" }
+
+  # 纯IP
+  cn_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs" }
+  google_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs" }
+  telegram_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs" }
+  netflix_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs" }
+
+
+  #释义：
+  #  mrs：singobx的二进制文件，优点：读取效率高，缺点：无法查看其内容、每个文件要么是域名要么都是ip不能混合写入！！！
+  
+  #  {type: http；远端规则, interval: 86400；更新时间（单位：s), behavior: ipcidr;指定二进制文件的内容是纯IP还是纯域名, format: mrs；文件后缀}
+  #         纯IP：ipcidr   纯域名：domain！！！错一个则无法启动！！！！！
+
+  #   {type: http, interval: 86400, behavior: classical, format: text}  text：经典格式  在behavior后需引用：classical 参数
