@@ -193,7 +193,7 @@ proxy-groups:
 #   名称   规则名    远端规则    更新频率/秒     二进制内容 规则名       list后缀名文件（经典后缀格式）
 # )
 rules:     #分流规则，按顺序依次排列
-  #纯域名
+  #纯域名 
   - RULE-SET,private_domain,🟢 直连
   - RULE-SET,ChatGPT,🤖 AI #私有收集
   - RULE-SET,google3_domain,👨🏿‍💻 GitHub
