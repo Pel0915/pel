@@ -1,35 +1,5 @@
-# 直连补充列表(国内域名不解析时，防止走代理使用)
+#地址：https://raw.githubusercontent.com/Pel0915/clash/refs/heads/main/CLASH/Direct.list
 
-# MyList
-# 域名后缀匹配
-DOMAIN-SUFFIX,time.windows.com
-DOMAIN-SUFFIX,lanzov.com
-DOMAIN-SUFFIX,hao123.com
-DOMAIN-SUFFIX,pan.baidu.com
-DOMAIN-rustdesk.com
-
-# 域名关键字匹配
-DOMAIN-KEYWORD,baidu
-DOMAIN-KEYWORD,ubuntu
-DOMAIN-KEYWORD,kaboshihaoka
-
-# IP段匹配
-IP-CIDR,219.146.1.66/32,no-resolve
-
-# 国内DNS
-DOMAIN-SUFFIX,dns.alidns.com
-DOMAIN-SUFFIX,doh.pub
-IP-CIDR,219.146.1.66/32,no-resolve
-IP-CIDR,219.147.1.66/32,no-resolve
-IP-CIDR,119.29.29.29/32,no-resolve
-IP-CIDR,223.5.5.5/32,no-resolve
-IP-CIDR,223.6.6.6/32,no-resolve
-IP-CIDR,180.76.76.76/32,no-resolve
-IP-CIDR,114.114.114.114/32,no-resolve
-IP-CIDR,114.114.115.115/32,no-resolve
-IP-CIDR,192.168.10.1/32,no-resolve
-
-#个人
 DOMAIN-SUFFIX,pan.baidu.com
 DOMAIN-SUFFIX,www.pan.baidu.com
 DOMAIN-SUFFIX,www.alipan.com
@@ -50,6 +20,7 @@ DOMAIN-SUFFIX,biliapi.net
 DOMAIN-SUFFIX,apple.com
 DOMAIN-SUFFIX,advertising.amazon.com
 DOMAIN-SUFFIX,qt.qiantuo888.xyz
+
 DOMAIN-SUFFIX,zcmwlkj.xyz
 DOMAIN-SUFFIX,www.ketu.qiantuo888.xyz
 DOMAIN-SUFFIX,lm.05321888.com:88
@@ -104,27 +75,3 @@ DOMAIN-SUFFIX,tmsearch.uspto.gov
 DOMAIN-SUFFIX,ppubs.uspto.gov
 DOMAIN-SUFFIX,like996.icu:1205
 DOMAIN-SUFFIX,releases.ubuntu.com
-
-# > 迅雷
-DOMAIN-SUFFIX,155.com
-DOMAIN-SUFFIX,2sonar.com
-DOMAIN-SUFFIX,8uri.cn
-DOMAIN-SUFFIX,falconalliance.cn
-DOMAIN-SUFFIX,gigaget.com
-DOMAIN-SUFFIX,kanimg.com
-DOMAIN-SUFFIX,kankan.com
-DOMAIN-SUFFIX,kuaipan.cn
-DOMAIN-SUFFIX,n0808.com
-DOMAIN-SUFFIX,neoimaging.cn
-DOMAIN-SUFFIX,newvr.com
-DOMAIN-SUFFIX,sandai.net
-DOMAIN-SUFFIX,sjzhushou.com
-DOMAIN-SUFFIX,szxlxzb.com
-DOMAIN-SUFFIX,thunderurl.com
-DOMAIN-SUFFIX,xlpan.com
-DOMAIN-SUFFIX,xlyouxi.net
-DOMAIN-SUFFIX,xunlei.cn
-DOMAIN-SUFFIX,xunlei.com
-DOMAIN-SUFFIX,xunlei.net
-PROCESS-NAME,Thunder
-PROCESS-NAME,Thunder.exe
