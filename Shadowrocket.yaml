@@ -1,3 +1,5 @@
+#地址：https://raw.githubusercontent.com/Pel0915/pel-MihomoTproxy/refs/heads/main/Shadowrocket.yaml
+
 [General]
 bypass-system = true
 skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,captive.apple.com,*.ccb.com,*.abchina.com.cn,*.psbc.com,www.baidu.com
