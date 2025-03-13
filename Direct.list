@@ -4,6 +4,8 @@
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
 # 域名后缀匹配
+DOMAIN-SUFFIX,detectportal.firefox.com
+DOMAIN-SUFFIX,ocws.officeapps.live.com
 DOMAIN-SUFFIX,alive.github.com
 DOMAIN-SUFFIX,lobe.peljoaf.top
 DOMAIN-SUFFIX,lobe-auth.peljoaf.top
