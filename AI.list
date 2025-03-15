@@ -4,9 +4,6 @@
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
 # 域名后缀匹配
-DOMAIN-SUFFIX,lobe.peljoaf.top
-DOMAIN-SUFFIX,lobe-auth.peljoaf.top
-DOMAIN-SUFFIX,lobe-s3.peljoaf.top
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,auth0.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
