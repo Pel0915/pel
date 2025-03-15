@@ -4,10 +4,6 @@
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
 # 域名后缀匹配
-DOMAIN-SUFFIX,lo.peljoaf.top
-DOMAIN-SUFFIX,lo-auth.peljoaf.top
-DOMAIN-SUFFIX,lo-s3.peljoaf.top
-DOMAIN-SUFFIX,npmmirror.com
 DOMAIN-SUFFIX,oms2.yunexpress.cn
 DOMAIN-SUFFIX,view.officeapps.live.com
 DOMAIN-SUFFIX,pan.baidu.com
