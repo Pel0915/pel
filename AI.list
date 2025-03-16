@@ -5,6 +5,8 @@
 # DOMAIN-KEYWORD,Claude
 # 域名后缀匹配
 
+
+DOMAIN-SUFFIX,ntp.aliyun.com
 DOMAIN-SUFFIX,registry.npmmirror.com
 DOMAIN-SUFFIX,time1.cloud.tencent.com
 DOMAIN-SUFFIX,chatgpt.com
