@@ -4,6 +4,9 @@
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
 # 域名后缀匹配
+
+DOMAIN-SUFFIX,registry.npmmirror.com
+DOMAIN-SUFFIX,time1.cloud.tencent.com
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,auth0.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
