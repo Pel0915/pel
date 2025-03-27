@@ -5,7 +5,6 @@
 # DOMAIN-KEYWORD,Claude
 # 域名后缀匹配
 DOMAIN-SUFFIX,chatgpt.com
-DOMAIN-SUFFIX,auth0.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
 DOMAIN-SUFFIX,events.statsigapi.net
 DOMAIN-SUFFIX,featuregates.org
