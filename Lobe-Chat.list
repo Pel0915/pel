@@ -6,8 +6,11 @@
 
 
 # 域名后缀匹配
-DOMAIN-SUFFIX,peljoaf.top
-DOMAIN-SUFFIX,peljoaf.cc
-# 域名关键字匹配
-DOMAIN-KEYWORD,auth
-DOMAIN-KEYWORD,lobe
+DOMAIN-SUFFIX,*.peljoaf.top
+DOMAIN-SUFFIX,*.peljoaf.cc
+DOMAIN-SUFFIX,gn.peljoaf.cc
+DOMAIN-SUFFIX,gn-auth.peljoaf.cc
+DOMAIN-SUFFIX,gn-s3.peljoaf.cc
+DOMAIN-SUFFIX,gg.peljoaf.cc
+DOMAIN-SUFFIX,gg-auth.peljoaf.cc
+DOMAIN-SUFFIX,gg-s3.peljoaf.cc
