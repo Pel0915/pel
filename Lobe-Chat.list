@@ -11,6 +11,3 @@ DOMAIN-SUFFIX,peljoaf.cc
 # 域名关键字匹配
 DOMAIN-KEYWORD,auth
 DOMAIN-KEYWORD,lobe
-DOMAIN-KEYWORD,cloudflare
-DOMAIN-KEYWORD,githubusercontent
-DOMAIN-KEYWORD,dns
