@@ -6,6 +6,7 @@
 
 
 # 域名后缀匹配
+DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,*.peljoaf.top
 DOMAIN-SUFFIX,*.peljoaf.cc
 DOMAIN-SUFFIX,gn.peljoaf.cc
