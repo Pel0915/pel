@@ -4,6 +4,8 @@
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
 # 域名后缀匹配
+
+DOMAIN-SUFFIX,todesk.com
 DOMAIN-SUFFIX,oms2.yunexpress.cn
 DOMAIN-SUFFIX,view.officeapps.live.com
 DOMAIN-SUFFIX,pan.baidu.com
