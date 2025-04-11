@@ -3,10 +3,8 @@
 # DOMAIN-KEYWORD,openai
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
-DOMAIN-KEYWORD,cloudflare
 
 # 域名后缀匹配
-DOMAIN-SUFFIX,cloudflare.com
 DOMAIN-SUFFIX,linux.do
 DOMAIN-SUFFIX,todesk.com
 DOMAIN-SUFFIX,oms2.yunexpress.cn
