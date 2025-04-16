@@ -6,6 +6,7 @@
 DOMAIN-KEYWORD,killerbest
 
 # 域名后缀匹配
+DOMAIN-SUFFIX,giffgaff.com
 DOMAIN-SUFFIX,sili-api.killerbest.xyz
 DOMAIN-SUFFIX,deepl.com
 DOMAIN-SUFFIX,linux.do
