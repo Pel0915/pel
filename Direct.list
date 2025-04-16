@@ -4,8 +4,10 @@
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
 DOMAIN-KEYWORD,killerbest
+DOMAIN-KEYWORD,besttelecom
 
 # 域名后缀匹配
+DOMAIN-SUFFIX,besttelecom.cc
 DOMAIN-SUFFIX,giffgaff.com
 DOMAIN-SUFFIX,sili-api.killerbest.xyz
 DOMAIN-SUFFIX,deepl.com
