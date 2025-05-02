@@ -8,6 +8,7 @@ DOMAIN-KEYWORD,claw
 
 
 # 域名后缀匹配
+DOMAIN-SUFFIX,cloudpingtest.com
 DOMAIN-SUFFIX,claw.com
 DOMAIN-SUFFIX,claw.cloud
 DOMAIN-SUFFIX,oray.com
