@@ -5,7 +5,6 @@ DOMAIN-KEYWORD,linux
 DOMAIN-KEYWORD,oray.net
 DOMAIN-KEYWORD,sunlogin
 DOMAIN-KEYWORD,claw
-DOMAIN-KEYWORD,infini
 
 # 域名后缀匹配
 DOMAIN-SUFFIX,cloudpingtest.com
@@ -39,8 +38,6 @@ DOMAIN-SUFFIX,bilivideo.com
 DOMAIN-SUFFIX,bilivideo.cn
 DOMAIN-SUFFIX,biliapi.com
 DOMAIN-SUFFIX,biliapi.net
-DOMAIN-SUFFIX,app.infini.money
-DOMAIN-SUFFIX,infini.money
 DOMAIN-SUFFIX,advertising.amazon.com
 DOMAIN-SUFFIX,qt.qiantuo888.xyz
 DOMAIN-SUFFIX,aliyundrive.com
