@@ -9,7 +9,7 @@ DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,Claude
 DOMAIN-KEYWORD,accounts
 # 域名后缀匹配
-
+DOMAIN-SUFFIX,client.wns.windows.com
 DOMAIN-SUFFIX,copilot.microsoft.com
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
